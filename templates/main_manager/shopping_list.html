@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "main_manager/base.html" %}
+{% load static %}
 
-</body>
-</html>
+
+{% block css %}
+{% endblock %}
+
+
+
+{% block content %}
+    <!--suppress ALL -->
+{% endblock %}
+
+
+
+{% block javascript %}
+    <script src="{% static "apps/main_manager/js/shopping_list.js" %}"></script>
+{% endblock %}
