@@ -1,13 +1,18 @@
-alert("hello");
 var recipe_manager = new Vue({
     delimiters: ['[[', ']]'],
-    el: "#asn_manager_app",
+    el: "#base_recipe_manager",
     vuetify: new Vuetify({
         theme: {
             dark: false
         }
     }),
-    data: {},
+    data: {
+        drawer_data: {
+            flag: true,
+            items: []
+        }
+
+    },
     watch: {},
     methods: {}
 
