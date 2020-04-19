@@ -44,18 +44,8 @@
             </v-app-bar>
 
             <v-container class="fill-height">
-{#                <v-row#}
-{#                align="center"#}
-{#                justify="center"#}
-{#                >#}
-{#                <v-btn#}
-{#                color="pink"#}
-{#                dark#}
-{#                @click.stop="drawer_data.flag = !drawer_data.flag"#}
-{#                >#}
-{#                Toggle#}
-{#                </v-btn>#}
-{#                </v-row>#}
+                {% block content %}
+                {% endblock %}
             </v-container>
 
             <v-navigation-drawer
@@ -93,9 +83,6 @@
             </v-navigation-drawer>
         </v-app>
     </div>
-
-    {% block content %}
-    {% endblock %}
 
     <script src="{% static "apps/main_manager/js/main_script.js" %}"></script>
 
