@@ -22,4 +22,6 @@ urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^$', views.main_redirection, name='main_url'),
     url(r'^shopping_list$', views.shopping_list, name='shopping_list_url'),
+    url(r'^load_data', views.load_data_page_render, name='load_data_url'),
+    url(r'^upload_files', views.process_load_files, name='process_data_files_url'),
 ]

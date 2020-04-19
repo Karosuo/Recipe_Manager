@@ -24,6 +24,9 @@
     <!-- vuetify end -->
 
 
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
     {% block css %}
     {% endblock %}
@@ -84,12 +87,29 @@
                     </v-list-item>
                 </v-list>
             </v-navigation-drawer>
+
+            <v-snackbar
+            v-model="snackbar_props.flag"
+            :timeout="snackbar_props.timeout"
+            :color="snackbar_props.color"
+            >
+                [[ snackbar_props.text ]]
+                <v-btn
+                :color="snackbar_props.close_btn_color"
+                text
+                @click="snackbar_props.flag = false"
+                >
+                Close
+                </v-btn>
+            </v-snackbar>
         </v-app>
     </div>
 
     <script>
         var shopping_list_url = "{% url 'shopping_list_url' %}";
-
+        var load_data_url = "{% url 'load_data_url' %}";
+        var upload_data_files_url = "{% url 'process_data_files_url' %}";
+        var base_token = '{{ csrf_token }}';
     </script>
 
     <script src="{% static "apps/main_manager/js/main_script.js" %}"></script>

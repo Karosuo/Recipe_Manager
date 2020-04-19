@@ -19,6 +19,7 @@ class Tag(models.Model):
 
 class MeasureUnit(models.Model):
     UnitName = models.CharField(max_length=100, unique=True)
+    LongDescription = models.CharField(max_length=200, default="")
 
     class Meta:
         db_table = "MeasureUnit"
@@ -105,4 +106,13 @@ class AisleTag(models.Model):
 
     class Meta:
         db_table = "AisleTag"
+
+
+class AlternateMUnits(models.Model):
+    Name = models.CharField(max_length=150)
+    EqQty = models.FloatField()
+    FK_Ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "AlternateMUnits"
 

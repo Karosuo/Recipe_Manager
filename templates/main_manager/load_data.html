@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "main_manager/base.html" %}
+{% load static %}
 
-</body>
-</html>
+
+{% block css %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <v-layout row justify-center class="ma-5">
+    <v-flex xs12 sm10>
+        <v-tabs
+        fixed-tabs
+        background-color="light-green darken-3"
+        dark
+        class="ma-0 pa-0"
+        @change="change_upload_tab"
+        >
+            <v-tab>
+              Upload Recipes
+            </v-tab>
+            <v-tab>
+              Upload Week Plan
+            </v-tab>
+            <v-tab>
+              Upload Inventory
+            </v-tab>
+
+            <v-tab-item>
+                <v-file-input show-size accept=".txt,.csv" dense outlined
+                label="Upload Recipes"
+                class="ma-2 mt-4"
+                :rules="[validate_recipes_file_format]"
+                :success="load_data_info.recipe_file_valid"
+                ref="recipes_file"
+                ></v-file-input>
+            </v-tab-item>
+
+            <v-tab-item>
+                <v-file-input show-size accept=".txt,.csv" dense outlined
+                label="Upload a week plan"
+                class="ma-2"
+                :rules="[validate_plan_file_format]"
+                :success="load_data_info.plan_file_valid"
+                ref="plan_file"></v-file-input>
+            </v-tab-item>
+
+            <v-tab-item>
+                <v-file-input show-size accept=".txt,.csv" dense outlined
+                label="Upload Current Inventory"
+                class="ma-2"
+                :rules="[validate_cinventory_file_format]"
+                :success="load_data_info.inventory_file_valid"
+                ref="inventory_file"></v-file-input>
+            </v-tab-item>
+
+        </v-tabs>
+        <v-btn
+        outlined
+        color="light-green darken-3"
+        :loading="load_data_info.loading_files"
+        @click="upload_data_file"
+        >Upload File</v-btn>
+
+    </v-flex>
+    </v-layout>
+
+{% endblock %}
+
+
+
+{% block javascript %}
+    <script>
+        recipe_manager.app_header_title = "Upload Data";
+    </script>
+{% endblock %}
