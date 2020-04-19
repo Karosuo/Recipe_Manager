@@ -33,19 +33,29 @@
 
     <div id="base_recipe_manager">
         <v-app>
+
+            <v-app-bar
+            color="deep-orange darken-1"
+            dark
+            prominent
+            height="50"
+            >
+                <v-app-bar-nav-icon @click.stop="drawer_data.flag = !drawer_data.flag"></v-app-bar-nav-icon>
+            </v-app-bar>
+
             <v-container class="fill-height">
-                <v-row
-                align="center"
-                justify="center"
-                >
-                <v-btn
-                color="pink"
-                dark
-                @click.stop="drawer_data.flag = !drawer_data.flag"
-                >
-                Toggle
-                </v-btn>
-                </v-row>
+{#                <v-row#}
+{#                align="center"#}
+{#                justify="center"#}
+{#                >#}
+{#                <v-btn#}
+{#                color="pink"#}
+{#                dark#}
+{#                @click.stop="drawer_data.flag = !drawer_data.flag"#}
+{#                >#}
+{#                Toggle#}
+{#                </v-btn>#}
+{#                </v-row>#}
             </v-container>
 
             <v-navigation-drawer
