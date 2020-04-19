@@ -20,5 +20,6 @@ from main_manager import views
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^$', views.shopping_list, name='shopping_list_url'),
+    url(r'^$', views.main_redirection, name='main_url'),
+    url(r'^shopping_list$', views.shopping_list, name='shopping_list_url'),
 ]

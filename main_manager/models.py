@@ -98,3 +98,11 @@ class Packages(models.Model):
 class PackagesInventory(models.Model):
     FK_Package = models.ForeignKey(Packages, on_delete=models.CASCADE)
     ExistingPackagesQty = models.FloatField(default=0) #The number of remaining packages, if it's 1.5, means one a half packages
+
+
+class AisleTag(models.Model):
+    Name = models.CharField(max_length=150, unique=True)
+
+    class Meta:
+        db_table = "AisleTag"
+
