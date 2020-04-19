@@ -7,6 +7,7 @@ var recipe_manager = new Vue({
         }
     }),
     data: {
+        app_header_title: "Recipe Manager",
         drawer_data: {
             flag: true,
             items: [
@@ -34,8 +35,22 @@ var recipe_manager = new Vue({
             selected: [],
             cart_items: [
                 {
-                    "name": "Platano",
-                    "text_qty": "10 KG"
+                    "GroupTitle": "Verduras",
+                    "GroupItems": [
+                        {
+                            "name": "Platano",
+                            "text_qty": "10 KG"
+                        }
+                    ]
+                },
+                {
+                    "GroupTitle": "Carnes",
+                    "GroupItems": [
+                        {
+                            "name": "Bisteck",
+                            "text_qty": "2 KG"
+                        }
+                    ]
                 }
             ]
         },

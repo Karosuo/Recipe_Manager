@@ -8,51 +8,67 @@
 
 
 {% block content %}
+    <v-layout row justify-center class="ma-5">
+    <v-flex xs12 sm8>
     <v-card
     class="mx-auto"
     max-width="500"
     xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
         <v-list shaped>
-            <v-list-item-group
-            v-model="shopping_list_data.selected"
-            multiple
-            >
-                <template v-for="(item, i) in shopping_list_data.cart_items">
-                    <v-divider
-                    v-if="!item"
-                    :key="`divider-${i}`"
-                    ></v-divider>
-
-                    <v-list-item
-                    v-else
-                    :key="`item-${i}`"
-                    :value="item.name"
-                    active-class="deep-orange--text text--accent-4"
-                    >
-                        <template v-slot:default="{ active, toggle }">
-                            <v-list-item-content>
-                                <v-list-item-title v-text="item.name"></v-list-item-title>
-                                <v-list-item-subtitle v-text="item.text_qty"></v-list-item-subtitle>
-                            </v-list-item-content>
-
-                            <v-list-item-action>
-                            <v-checkbox
-                            :input-value="active"
-                            :true-value="item"
-                            color="deep-orange accent-4"
-                            @click="toggle"
-                            ></v-checkbox>
-                            </v-list-item-action>
-                        </template>
-                    </v-list-item>
+            <v-list-group
+            prepend-icon="view_stream"
+            value="true"
+            v-for="group_elem in shopping_list_data.cart_items">
+                <template v-slot:activator>
+                    <v-list-item-title>[[ group_elem.GroupTitle ]]</v-list-item-title>
                 </template>
-            </v-list-item-group>
+
+                <v-list-item-group
+                v-model="shopping_list_data.selected"
+                multiple
+                >
+                    <template v-for="(item, i) in group_elem.GroupItems">
+                        <v-divider
+                        v-if="!item"
+                        :key="`divider-${item.name}-${i}`"
+                        ></v-divider>
+
+                        <v-list-item
+                        v-else
+                        :key="`item-${item.name}-${i}`"
+                        :value="item.name"
+                        active-class="deep-orange--text text--accent-4"
+                        >
+                            <template v-slot:default="{ active, toggle }">
+                                <v-list-item-content>
+                                    <v-list-item-title v-text="item.name"></v-list-item-title>
+                                    <v-list-item-subtitle v-text="item.text_qty"></v-list-item-subtitle>
+                                </v-list-item-content>
+
+                                <v-list-item-action>
+                                <v-checkbox
+                                :input-value="active"
+                                :true-value="item"
+                                color="deep-orange accent-4"
+                                @click="toggle"
+                                ></v-checkbox>
+                                </v-list-item-action>
+                            </template>
+                        </v-list-item>
+                    </template>
+                </v-list-item-group>
+            </v-list-group>
         </v-list>
+
     </v-card>
+    </v-flex>
+    </v-layout>
 {% endblock %}
 
 
 
 {% block javascript %}
-
+    <script>
+        recipe_manager.app_header_title = "Shopping List";
+    </script>
 {% endblock %}
